@@ -27,6 +27,15 @@ and use
 
 to send feedback.
 
+- note:
+  > To view the directories that you've granted indexing permission to or
+    to revoke indexing permission, see the `indexingAllowDirs` field in the
+     Augment settings file (`~/.augment/settings.json`).
+  - you can easily do that in shell with:
+    ```sh
+    less ~/.augment/settings.json
+    ```
+
 - custom slash commands: 
 https://github.com/augmentcode/auggie?tab=readme-ov-file#custom-slash-commands
 
