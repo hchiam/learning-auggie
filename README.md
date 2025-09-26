@@ -15,7 +15,8 @@ cd /path/to/a/project
 auggie "optional starting prompt"
 # or maybe preferably to get out of interactive mode (like for CI):
 auggie --print "some instruction"
-# add --quiet to just get the final output
+# add --quiet to just get the final output:
+auggie --print --quiet "some instruction"
 ```
 
 and use
@@ -32,4 +33,6 @@ https://github.com/augmentcode/auggie?tab=readme-ov-file#custom-slash-commands
 - GitHub actions for PRs: 
 https://github.com/augmentcode/auggie?tab=readme-ov-file#github-actions-for-prs
 
-- see https://github.com/augmentcode/auggie for more info
+- for more info, see:
+  - https://github.com/augmentcode/auggie
+  - https://docs.augmentcode.com/cli/overview
