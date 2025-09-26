@@ -22,6 +22,12 @@ auggie --print "some instruction"
 auggie --print --quiet "some instruction"
 ```
 
+```sh
+# if you have the fancy CLI interface showing, you can type
+/ask
+# then hit enter and THEN type your prompt
+```
+
 and use
 
 ```sh
@@ -29,6 +35,12 @@ and use
 ```
 
 to send feedback.
+
+And to exit from the fancy CLI interface:
+
+```sh
+/exit
+```
 
 - note:
   > To view the directories that you've granted indexing permission to or
