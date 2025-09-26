@@ -9,9 +9,12 @@ yarn global add @augmentcode/auggie
 
 auggie --version
 
-auggie login
-
 cd /path/to/a/project
+
+auggie login
+# or in future new CLIs, just:
+auggie
+# or:
 auggie "optional starting prompt"
 # or maybe preferably to get out of interactive mode (like for CI):
 auggie --print "some instruction"
