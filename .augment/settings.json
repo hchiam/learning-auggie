@@ -1,5 +1,5 @@
 {
   "tool-permissions": [
-    { "tool-name": "*", "permission": { "type": "ask-user" } }
+    // { "tool-name": "...", "permission": { "type": "ask-user" } }
   ]
 }
