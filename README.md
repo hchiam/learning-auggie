@@ -75,7 +75,12 @@ And to exit from the fancy CLI interface:
 
 ```sh
 augp 'create a subfolder "chrome-built-in-ai-apis" and empty readme in it'
-# I manually wrote my own notes in the README.md
+
+# then I manually wrote my own notes in the README.md
+
 augp 'help me create a rules file to specify the allowed tools that auggie cli can use in this folder'
 # this generated .augment folder, AGENTS.md, and CLAUDE.md (not sure how correct the content of those 2 md files is though)
+
+augp "create a .sh file to run perl -i -C -pe 's/[\x{200B}-\x{200D}\x{FEFF}\x{00A0}\x{2028}\x{2029}\x{E0020}-\x{E007E}\x{FFFD}]//g' *.md"
+# this generated clean_markdown.sh
 ```
