@@ -1,5 +1,26 @@
 {
   "tool-permissions": [
-    // { "tool-name": "...", "permission": { "type": "ask-user" } }
+    // Process Management Tools
+    { "tool-name": "launch-process", "permission": { "type": "ask-user" } },
+    { "tool-name": "read-process", "permission": { "type": "ask-user" } },
+    { "tool-name": "write-process", "permission": { "type": "ask-user" } },
+    { "tool-name": "list-processes", "permission": { "type": "ask-user" } },
+    { "tool-name": "kill-process", "permission": { "type": "ask-user" } },
+
+    // File Operations Tools
+    { "tool-name": "view", "permission": { "type": "ask-user" } },
+    { "tool-name": "str-replace-editor", "permission": { "type": "ask-user" } },
+    { "tool-name": "save-file", "permission": { "type": "ask-user" } },
+    { "tool-name": "remove-files", "permission": { "type": "ask-user" } },
+    { "tool-name": "codebase-retrieval", "permission": { "type": "ask-user" } },
+    { "tool-name": "grep-search", "permission": { "type": "ask-user" } },
+
+    // External Services Tools
+    { "tool-name": "github-api", "permission": { "type": "ask-user" } },
+    { "tool-name": "linear", "permission": { "type": "ask-user" } },
+    { "tool-name": "notion", "permission": { "type": "ask-user" } },
+    { "tool-name": "supabase", "permission": { "type": "ask-user" } },
+    { "tool-name": "web-search", "permission": { "type": "ask-user" } },
+    { "tool-name": "web-fetch", "permission": { "type": "ask-user" } }
   ]
 }

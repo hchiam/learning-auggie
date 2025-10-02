@@ -100,4 +100,13 @@ augp "set up the settings.json rules file for auggie cli to always ask for permi
 augp 'simplify settings.json - its unnecessarily verbose right now'
 
 augp "check https://docs.augmentcode.com/cli/permissions#configuration-files and confirm you've typed things out correctly in .augment/settings.json"
+
+augp 'check https://docs.augmentcode.com/cli/permissions - are you sure that "tool-name": "*" in .augment/settings.json is correct? should it rather be "shell-input-regex": "*" or is that unnecessary to force all tool calls to require asking for explicit user permission?'
+
+augp 'check https://docs.augmentcode.com/cli/permissions - are you sure that "tool-name": "*" in .augment/settings.json is correct? should it rather be "shell-input-regex": "*" or is that unnecessary to force all tool calls to require asking for explicit user permission? help me fix this'
+
+augp "is it possible to simply disable all tool calls?"
+
+augp "look at https://docs.augmentcode.com/cli/permissions#available-tools and add all available tools and make them all require user approval"
+# retrying this a few times finally edited .augment/settings.json to add all currently-available rules found at https://docs.augmentcode.com/cli/permissions#available-tools
 ```
