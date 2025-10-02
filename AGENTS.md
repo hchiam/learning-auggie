@@ -1,14 +1,18 @@
 # AI Agent Tool Permissions and Guidelines
 
+## User Confirmation Requirement
+
+**CRITICAL**: All file operations (reading, creating, editing, deleting) must receive explicit user confirmation through the ask-user setting in .augment/settings.json. Agents must never perform file operations without first obtaining user permission.
+
 ## Tool Access Control
 
 ### Permitted Tools
 
 #### File System Operations
-- ✅ Read files within project directory
-- ✅ Create new files and directories
-- ✅ Edit existing project files
-- ✅ Delete files with confirmation
+- ⚠️ Read files within project directory (requires user confirmation via ask-user)
+- ⚠️ Create new files and directories (requires user confirmation via ask-user)
+- ⚠️ Edit existing project files (requires user confirmation via ask-user)
+- ⚠️ Delete files (requires user confirmation via ask-user)
 - ❌ Access files outside project root
 - ❌ Modify system files
 
@@ -63,7 +67,7 @@
 ## Safety Protocols
 
 ### Confirmation Required For
-1. **File Deletions**: Any operation that removes files
+1. **All File Operations**: Reading, creating, editing, or deleting any files (via ask-user setting)
 2. **Dependency Changes**: Installing or removing packages
 3. **Configuration Updates**: Modifying config files
 4. **Git Operations**: Commits, merges, or remote operations
@@ -135,6 +139,7 @@ This project is for learning Auggie CLI and AI development tools:
 ## Best Practices
 
 ### Before Making Changes
+- Always ask user for permission via ask-user setting before any file operations
 - Understand the current state
 - Plan the modification approach
 - Consider potential side effects

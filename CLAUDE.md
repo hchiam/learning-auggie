@@ -1,11 +1,15 @@
 # Auggie CLI Tool Restrictions and Guidelines
 
+## User Confirmation Requirement
+
+**IMPORTANT**: All file operations (reading, creating, editing, deleting) require explicit user confirmation through the ask-user setting in .augment/settings.json. No file operations should be performed without first asking the user for permission.
+
 ## Allowed Tools
 
 ### File Operations
-- **File Reading**: Allow reading files to understand project structure and content
-- **File Writing**: Allow creating and editing files within the project directory
-- **File Deletion**: Allow removing files only when explicitly requested
+- **File Reading**: Require user confirmation (ask-user) before reading any files
+- **File Writing**: Require user confirmation (ask-user) before creating or editing files
+- **File Deletion**: Require user confirmation (ask-user) before removing any files
 
 ### Code Analysis
 - **Codebase Retrieval**: Allow searching and analyzing existing code
@@ -43,13 +47,14 @@
 
 ### Confirmation Required
 Always ask for confirmation before:
-- Deleting multiple files
+- Any file operations (reading, creating, editing, deleting) via ask-user setting
 - Making irreversible changes
 - Modifying configuration files
 - Installing new dependencies
 - Committing code changes
 
 ### Best Practices
+- Always request user permission via ask-user before any file operations
 - Backup important files before major changes
 - Test changes in development environment first
 - Follow existing code style and conventions

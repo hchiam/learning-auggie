@@ -114,4 +114,7 @@ augp "look at https://docs.augmentcode.com/cli/permissions#available-tools and a
 augp "change .augment/settings.json to allow write-process"
 aug "change .augment/settings.json to allow write-process"
 augp "clear README.md"
+
+augp "edit AGENTS.md and CLAUDE.md if/as necessary to always require asking the user (ask-user in .augment/settings.json) even for reading/editing/creating/deleting files"
+# this didn't help prevent the commands above either
 ```
