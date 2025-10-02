@@ -1,6 +1,6 @@
 # Learning [Auggie](https://github.com/augmentcode/auggie) CLI
 
-Just one of the things I'm learning. https://github.com/hchiam/learning
+Just one of the things I'm learning. <https://github.com/hchiam/learning>
 
 ```sh
 npm install -g @augmentcode/auggie
@@ -47,16 +47,26 @@ And to exit from the fancy CLI interface:
     to revoke indexing permission, see the `indexingAllowDirs` field in the
      Augment settings file (`~/.augment/settings.json`).
   - you can easily do that in shell with:
+
     ```sh
     less ~/.augment/settings.json
     ```
 
-- custom slash commands: 
-https://github.com/augmentcode/auggie?tab=readme-ov-file#custom-slash-commands
+- custom slash commands:
+<https://github.com/augmentcode/auggie?tab=readme-ov-file#custom-slash-commands>
 
-- GitHub actions for PRs: 
-https://github.com/augmentcode/auggie?tab=readme-ov-file#github-actions-for-prs
+- GitHub actions for PRs:
+<https://github.com/augmentcode/auggie?tab=readme-ov-file#github-actions-for-prs>
 
 - for more info, see:
-  - https://github.com/augmentcode/auggie
-  - https://docs.augmentcode.com/cli/overview
+  - <https://github.com/augmentcode/auggie>
+  - <https://docs.augmentcode.com/cli/overview>
+
+- my personal suggestions for faster typing in CLI: (set up in .bash_profile)
+
+  ```sh
+  alias aug='auggie'
+  alias augp='auggie --print '
+  alias augpq='auggie --print --quiet '
+  alias augq='auggie --quiet '
+  ```
