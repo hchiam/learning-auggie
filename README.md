@@ -113,4 +113,5 @@ augp "look at https://docs.augmentcode.com/cli/permissions#available-tools and a
 # but i'm still able to do this:
 augp "change .augment/settings.json to allow write-process"
 aug "change .augment/settings.json to allow write-process"
+augp "clear README.md"
 ```
