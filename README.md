@@ -85,4 +85,14 @@ augp "create a .sh file to run perl -i -C -pe 's/[\x{200B}-\x{200D}\x{FEFF}\x{00
 # this generated clean_markdown.sh, which can be run with
 
 bash clean_markdown.sh
+
+augp 'HMW set up the rules files for auggie cli to always ask for permission before running any and all tools?'
+# this created folder .augment and some files in it,
+# but then it got an error
+
+rm -rf .augment/*
+
+# after googling, i found this: https://docs.augmentcode.com/cli/permissions#configuration-files
+
+augp "set up the settings.json rules file for auggie cli to always ask for permission before running any and all tools? minimally do something like regex '*' and always ask"
 ```
