@@ -64,9 +64,18 @@ And to exit from the fancy CLI interface:
 
 - my personal suggestions for faster typing in CLI: (set up in .bash_profile)
 
-  ```sh
+  ```bash
   alias aug='auggie'
   alias augp='auggie --print '
   alias augpq='auggie --print --quiet '
   alias augq='auggie --quiet '
   ```
+
+## practice
+
+```sh
+augp 'create a subfolder "chrome-built-in-ai-apis" and empty readme in it'
+# I manually wrote my own notes in the README.md
+augp 'help me create a rules file to specify the allowed tools that auggie cli can use in this folder'
+# this generated .augment folder, AGENTS.md, and CLAUDE.md (not sure how correct the content of those 2 md files is though)
+```
