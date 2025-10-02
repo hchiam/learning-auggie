@@ -3,39 +3,9 @@
     "rules": [
       {
         "pattern": "*",
-        "permission": "ask",
-        "description": "Always ask for permission before running any tool"
+        "permission": "ask"
       }
     ],
     "defaultPermission": "ask"
-  },
-  "safetySettings": {
-    "requireConfirmation": true,
-    "allowDestructiveOperations": false,
-    "restrictToProjectDirectory": true
-  },
-  "projectSettings": {
-    "name": "learning-auggie",
-    "description": "Learning project for Auggie CLI with strict permission controls",
-    "allowedOperations": [
-      "read",
-      "analyze",
-      "suggest"
-    ],
-    "restrictedOperations": [
-      "delete",
-      "deploy",
-      "system-modify",
-      "network-access"
-    ]
-  },
-  "confirmationRequired": [
-    "file-delete",
-    "file-modify",
-    "package-install",
-    "git-commit",
-    "git-push",
-    "system-command",
-    "network-request"
-  ]
+  }
 }

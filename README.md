@@ -95,4 +95,7 @@ rm -rf .augment/*
 # after googling, i found this: https://docs.augmentcode.com/cli/permissions#configuration-files
 
 augp "set up the settings.json rules file for auggie cli to always ask for permission before running any and all tools? minimally do something like regex '*' and always ask"
+# this generated .augment/settings.json, but seems overly verbose
+
+augp 'simplify settings.json - its unnecessarily verbose right now'
 ```
