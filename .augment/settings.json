@@ -1,11 +1,10 @@
 {
-  "toolPermissions": {
-    "rules": [
-      {
-        "pattern": "*",
-        "permission": "ask"
+  "tool-permissions": [
+    {
+      "tool-name": "*",
+      "permission": {
+        "type": "ask-user"
       }
-    ],
-    "defaultPermission": "ask"
-  }
+    }
+  ]
 }

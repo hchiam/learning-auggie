@@ -98,4 +98,6 @@ augp "set up the settings.json rules file for auggie cli to always ask for permi
 # this generated .augment/settings.json, but seems overly verbose
 
 augp 'simplify settings.json - its unnecessarily verbose right now'
+
+augp "check https://docs.augmentcode.com/cli/permissions#configuration-files and confirm you've typed things out correctly in .augment/settings.json"
 ```
