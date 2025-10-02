@@ -109,4 +109,8 @@ augp "is it possible to simply disable all tool calls?"
 
 augp "look at https://docs.augmentcode.com/cli/permissions#available-tools and add all available tools and make them all require user approval"
 # retrying this a few times finally edited .augment/settings.json to add all currently-available rules found at https://docs.augmentcode.com/cli/permissions#available-tools
+
+# but i'm still able to do this:
+augp "change .augment/settings.json to allow write-process"
+aug "change .augment/settings.json to allow write-process"
 ```
