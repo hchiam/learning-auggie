@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Built-in AI APIs Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc05 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .api-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            background: #fafafa;
+        }
+        
+        .api-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #4285f4;
+            min-height: 50px;
+        }
+        
+        .error {
+            border-left-color: #ea4335;
+            background: #fef7f7;
+            color: #d93025;
+        }
+        
+        .success {
+            border-left-color: #34a853;
+            background: #f7fef7;
+            color: #137333;
+        }
+        
+        .status {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Chrome Built-in AI APIs Demo</h1>
+            <p>Explore Language Detection, Translation, and Summarization APIs</p>
+        </div>
+        
+        <div class="content">
+            <div class="warning">
+                <strong>⚠️ Requirements:</strong> This demo requires Chrome Canary with experimental AI features enabled. 
+                Visit <code>chrome://flags/#optimization-guide-on-device-model</code> and enable the flag.
+            </div>
+            
+            <!-- Language Detection Section -->
+            <div class="api-section">
+                <h2>🔍 Language Detection</h2>
+                <div class="input-group">
+                    <label for="detectText">Text to detect language:</label>
+                    <textarea id="detectText" rows="3" placeholder="Enter text in any language...">Hello, how are you today? Bonjour, comment allez-vous? Hola, ¿cómo estás?</textarea>
+                </div>
+                <button class="btn" onclick="detectLanguage()">Detect Language</button>
+                <button class="btn" onclick="checkDetectorAvailability()">Check Availability</button>
+                <div id="detectResult" class="result"></div>
+            </div>
+            
+            <!-- Translation Section -->
+            <div class="api-section">
+                <h2>🌐 Translation</h2>
+                <div class="language-grid">
+                    <div class="input-group">
+                        <label for="sourceLanguage">Source Language:</label>
+                        <select id="sourceLanguage">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ru">Russian</option>
+                            <option value="ja">Japanese</option>
+                            <option value="ko">Korean</option>
+                            <option value="zh">Chinese</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="targetLanguage">Target Language:</label>
+                        <select id="targetLanguage">
+                            <option value="ja">Japanese</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="ru">Russian</option>
+                            <option value="en">English</option>
+                            <option value="ko">Korean</option>
+                            <option value="zh">Chinese</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="translateText">Text to translate:</label>
+                    <textarea id="translateText" rows="3" placeholder="Enter text to translate...">What time is it? I hope you're having a great day!</textarea>
+                </div>
+                <button class="btn" onclick="translateText()">Translate</button>
+                <button class="btn" onclick="translateStreaming()">Stream Translation</button>
+                <button class="btn" onclick="checkTranslatorAvailability()">Check Availability</button>
+                <div id="translateResult" class="result"></div>
+            </div>
+            
+            <!-- Summarization Section -->
+            <div class="api-section">
+                <h2>📝 Text Summarization</h2>
+                <div class="input-group">
+                    <label for="summarizeText">Text to summarize:</label>
+                    <textarea id="summarizeText" rows="6" placeholder="Enter a long text to summarize...">Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans and animals. Leading AI textbooks define the field as the study of "intelligent agents": any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals. Colloquially, the term "artificial intelligence" is often used to describe machines that mimic "cognitive" functions that humans associate with the human mind, such as "learning" and "problem solving". As machines become increasingly capable, tasks considered to require "intelligence" are often removed from the definition of AI, a phenomenon known as the AI effect. A quip in Tesler's Theorem says "AI is whatever hasn't been done yet." For instance, optical character recognition is frequently excluded from things considered to be AI, having become a routine technology.</textarea>
+                </div>
+                <button class="btn" onclick="summarizeText()">Summarize</button>
+                <button class="btn" onclick="checkSummarizerAvailability()">Check Availability</button>
+                <div id="summarizeResult" class="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables to store API instances
+        let detector = null;
+        let translator = null;
+        let summarizer = null;
+
+        // Utility function to display results
+        function displayResult(elementId, content, isError = false, isSuccess = false) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = content;
+            element.className = 'result';
+            if (isError) element.classList.add('error');
+            if (isSuccess) element.classList.add('success');
+        }
+
+        // Language Detection Functions
+        async function detectLanguage() {
+            const text = document.getElementById('detectText').value;
+            if (!text.trim()) {
+                displayResult('detectResult', 'Please enter some text to detect.', true);
+                return;
+            }
+
+            try {
+                displayResult('detectResult', 'Detecting language...');
+                
+                if (!detector) {
+                    detector = await LanguageDetector.create({
+                        expectedInputLanguages: ["en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh"]
+                    });
+                }
+
+                const results = await detector.detect(text);
+                let resultHtml = '<strong>Detection Results:</strong><br>';
+                results.forEach((result, index) => {
+                    resultHtml += `${index + 1}. Language: <strong>${result.detectedLanguage}</strong> (Confidence: ${(result.confidence * 100).toFixed(1)}%)<br>`;
+                });
+                
+                displayResult('detectResult', resultHtml, false, true);
+            } catch (error) {
+                displayResult('detectResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function checkDetectorAvailability() {
+            try {
+                const availability = await LanguageDetector.availability({
+                    expectedInputLanguages: ["en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh"]
+                });
+                displayResult('detectResult', `Language Detector Availability: <strong>${availability}</strong>`, false, true);
+            } catch (error) {
+                displayResult('detectResult', `Error checking availability: ${error.message}`, true);
+            }
+        }
+
+        // Translation Functions
+        async function translateText() {
+            const text = document.getElementById('translateText').value;
+            const sourceLang = document.getElementById('sourceLanguage').value;
+            const targetLang = document.getElementById('targetLanguage').value;
+            
+            if (!text.trim()) {
+                displayResult('translateResult', 'Please enter some text to translate.', true);
+                return;
+            }
+
+            try {
+                displayResult('translateResult', 'Translating...');
+                
+                translator = await Translator.create({
+                    sourceLanguage: sourceLang,
+                    targetLanguage: targetLang
+                });
+
+                const translation = await translator.translate(text);
+                displayResult('translateResult', 
+                    `<strong>Original (${sourceLang}):</strong> ${text}<br><br><strong>Translation (${targetLang}):</strong> ${translation}`, 
+                    false, true);
+                    
+            } catch (error) {
+                displayResult('translateResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function translateStreaming() {
+            const text = document.getElementById('translateText').value;
+            const sourceLang = document.getElementById('sourceLanguage').value;
+            const targetLang = document.getElementById('targetLanguage').value;
+            
+            if (!text.trim()) {
+                displayResult('translateResult', 'Please enter some text to translate.', true);
+                return;
+            }
+
+            try {
+                displayResult('translateResult', 'Starting streaming translation...');
+                
+                translator = await Translator.create({
+                    sourceLanguage: sourceLang,
+                    targetLanguage: targetLang
+                });
+
+                const stream = translator.translateStreaming(text);
+                let translation = '';
+                let resultHtml = `<strong>Original (${sourceLang}):</strong> ${text}<br><br><strong>Streaming Translation (${targetLang}):</strong><br>`;
+                
+                for await (const chunk of stream) {
+                    translation += chunk;
+                    displayResult('translateResult', resultHtml + translation + '<span style="animation: blink 1s infinite;">|</span>');
+                }
+                
+                displayResult('translateResult', resultHtml + translation, false, true);
+                
+            } catch (error) {
+                displayResult('translateResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function checkTranslatorAvailability() {
+            const sourceLang = document.getElementById('sourceLanguage').value;
+            const targetLang = document.getElementById('targetLanguage').value;
+            
+            try {
+                const availability = await Translator.availability({
+                    sourceLanguage: sourceLang,
+                    targetLanguage: targetLang
+                });
+                displayResult('translateResult', 
+                    `Translator Availability (${sourceLang} → ${targetLang}): <strong>${availability}</strong>`, 
+                    false, true);
+            } catch (error) {
+                displayResult('translateResult', `Error checking availability: ${error.message}`, true);
+            }
+        }
+
+        // Summarization Functions
+        async function summarizeText() {
+            const text = document.getElementById('summarizeText').value;
+            
+            if (!text.trim()) {
+                displayResult('summarizeResult', 'Please enter some text to summarize.', true);
+                return;
+            }
+
+            try {
+                displayResult('summarizeResult', 'Summarizing text...');
+                
+                if (!summarizer) {
+                    summarizer = await Summarizer.create();
+                }
+
+                const summary = await summarizer.summarize(text);
+                displayResult('summarizeResult', 
+                    `<strong>Original Text:</strong><br>${text}<br><br><strong>Summary:</strong><br>${summary}`, 
+                    false, true);
+                    
+            } catch (error) {
+                displayResult('summarizeResult', `Error: ${error.message}<br><br><em>Note: Summarization API may not be available yet in your Chrome version.</em>`, true);
+            }
+        }
+
+        async function checkSummarizerAvailability() {
+            try {
+                const availability = await Summarizer.availability();
+                displayResult('summarizeResult', `Summarizer Availability: <strong>${availability}</strong>`, false, true);
+            } catch (error) {
+                displayResult('summarizeResult', `Error checking availability: ${error.message}`, true);
+            }
+        }
+
+        // Cleanup function
+        window.addEventListener('beforeunload', () => {
+            if (detector) detector.destroy();
+            if (translator) translator.destroy();
+            if (summarizer) summarizer.destroy();
+        });
+
+        // Add blinking cursor animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

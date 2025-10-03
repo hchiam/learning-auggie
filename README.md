@@ -73,6 +73,8 @@ And to exit from the fancy CLI interface:
 
 ## practice
 
+- updating `~/.augment/settings.json` worked for me! (as opposed to this project's `.augment/settings.json`)
+
 ```sh
 augp 'create a subfolder "chrome-built-in-ai-apis" and empty readme in it'
 
@@ -128,4 +130,15 @@ aug "clear README.md"
 # this required asking user for permission to "read file" (view) and "edit file" (str-replace-editor)
 
 # CONCLUSION: updating ~/.augment/settings.json worked for me!
+
+augp 'generate a one-file html file demo in chrome-built-in-ai-apis'
+# this now correctly won't work, so
+# have to go in interactive view:
+aug 'generate a one-file html file demo in chrome-built-in-ai-apis'
+# Here are the messages you've sent me verbatim in this conversation:
+#      1. "create an empty test.txt file"
+#      2. "actually nvm"
+#      3. "rm"
+#      4. "now run the demo"
+#      5. "repeat back to me verbatim what messages i've sent you in this conversation"
 ```
