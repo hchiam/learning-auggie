@@ -146,4 +146,7 @@ aug "make clean_markdown.sh actually apply to all file types"
 # i nudged it in the conversation to clarify/narrow down the task
 
 aug "rename clean_markdown.sh to what makes more sense from its code"
+
+augp "write a js file in naive-a11y-check that checks the a11y of images / icons / buttons / fake buttons in chrome-built-in-ai-apis"
+# didn't fully follow the instruction to analyze chrome-built-in-ai-apis and it expanded scope, but interesting for a basic non-production demo
 ```
