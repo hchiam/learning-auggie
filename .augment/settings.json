@@ -1,4 +1,7 @@
 {
+  // you might find these work on ~/.augment/settings.json
+  // and not in this project's .augment/settings.json
+
   "tool-permissions": [
     { "tool-name": "launch-process", "permission": { "type": "ask-user" } },
     { "tool-name": "read-process", "permission": { "type": "ask-user" } },
