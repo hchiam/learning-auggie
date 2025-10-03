@@ -117,4 +117,15 @@ augp "clear README.md"
 
 augp "edit AGENTS.md and CLAUDE.md if/as necessary to always require asking the user (ask-user in .augment/settings.json) even for reading/editing/creating/deleting files"
 # this didn't help prevent the commands above either
+
+aug
+# auggie cli isn't respecting ask-user in the .augment/settings.json file
+# it suggested updating ~/.augment/settings.json with the tool-permissions rules
+
+augp "clear README.md"
+# this was denied (non-interactive mode)
+aug "clear README.md"
+# this required asking user for permission to "read file" (view) and "edit file" (str-replace-editor)
+
+# CONCLUSION: updating ~/.augment/settings.json worked for me!
 ```
