@@ -141,4 +141,9 @@ aug 'generate a one-file html file demo in chrome-built-in-ai-apis'
 #      3. "rm"
 #      4. "now run the demo"
 #      5. "repeat back to me verbatim what messages i've sent you in this conversation"
+
+aug "make clean_markdown.sh actually apply to all file types"
+# i nudged it in the conversation to clarify/narrow down the task
+
+aug "rename clean_markdown.sh to what makes more sense from its code"
 ```
